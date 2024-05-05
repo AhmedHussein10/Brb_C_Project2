@@ -1,44 +1,70 @@
+
 #include <stdio.h>
 #include <stdlib.h>
+#include<string.h>
+#include "file_access.h"
+record students[100];
+int ReadDataFromFile() {
+    int records = 0;
+    FILE *read;
+    read = fopen("student_data.csv", "r");
+    if (read == NULL) {
+        printf("Error opening file\n");
+        exit(1);
+    }
 
 
-void WriteDataToFile (void)
-{
-   FILE *file=NULL;
-   file=fopen("student_data.csv","w");
+    while (fscanf(read, "%49[^,],%d,%d,%49[^,],%49[^,],%d\n", students[records].name, &students[records].id, &students[records].age, students[records].gender, students[records].pass, &students[records].grade) != EOF) {
 
-   if (file!=NULL)
-   {
-      for (int i=0;i<Students_Number;i++)
-      {
-         fprintf (file,"%s %f %s %d %s %s %d    %s \n",students[i].Name,students[i].TotalGrade
-                                                      ,students[i].ID,students[i].Age,students[i].Gender
-                                                      ,students[i].Pass,Students_Number,Admin_Pass);
-      }
-   }
+        records++;
+    }
 
-
-   else
-   {
-      printf ("Error opening file\n");
-   }
-
-   fclose(file);
+    fclose(read);
+    return records;
 }
 
-void ReadDataFromFile (void)
+void WriteDataToFile(int students_number)
 {
-   int i=0;
-   FILE *file;
-   file=fopen("student_data.csv","r");
+    FILE *write;
+    write=fopen("student_data.csv","a");
+    if(write==NULL)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    for(int i=0;i<students_number;i++)
+    {
 
-   while (fscanf(file,"%s %f %s %d %s %s %d    %s \n",&students[i].Name,&students[i].TotalGrade
-                                                     ,&students[i].ID,&students[i].Age,&students[i].Gender
-                                                     ,&students[i].Pass,&Students_Number,&Admin_Pass)!=EOF)
+        fprintf(write,"%s,%d,%d,%s,%s,%d\n",students[i].name,students[i].id,students[i].age,students[i].gender,students[i].pass,students[i].grade);
+    }
+    fclose(write);
 
-   {
-      i++;
-   }
-
-   fclose(file);
 }
+void WriteAdminPassword(char *paass)
+{
+
+    FILE *admin_pass=fopen("admin_password.csv","w");
+    if(admin_pass==NULL)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+
+    fprintf(admin_pass,"%s\n",paass);
+    fclose(admin_pass);
+}
+char* ReadAdminPassword()
+{
+    static char pass[50];
+    FILE *read_pass=fopen("admin_password.csv","r");
+
+    if(read_pass==NULL)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    fscanf(read_pass,"%49[^,]\n",pass);
+    fclose(read_pass);
+    return pass;
+}
+
