@@ -19,7 +19,6 @@ int select_mode(void)       // determin if the user will go admin mode or user m
 int admin_menu(void)    //show admin Privileges
 {
     int choice;
-    do{
     printf("\t\t\t ______________________________________\n");
     printf("\t\t\t|                                      |\n");
     printf("\t\t\t|       1. Add student record          |\n");
