@@ -1,29 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "student.h"
-// Function to edit student's password
-void edit_student_pass(int i)    // take index of student as a parameter i
+#include "admin.h"
+#include "input.h"
+#include "authentication.h"
+#include "file_access.h"
+#include "data_management.h"
+
+void view_student_record(int i)
 {
-    char new_pass[8];
-    printf("Enter New Pass : ");
-    scanf("%s",new_pass);       // Input new password
-    strcpy(students[i].Pass,new_pass);
-    printf("Password updated successfully.\n");
+
+   printf(" Name :     %s\n ID :       %d\n Age :      %d\n Gender :   %s\n Password : %s\n Grade :    %d\n",students[i].name,students[i].id,students[i].age
+                                                                                                            ,students[i].gender,students[i].pass,students[i].grade);
+}
+
+void edit_student_pass(int i)
+{
+   int num_records=ReadDataFromFile();
+   char* new_pass=(char*)malloc(50);
+
+   printf("Enter New Pass : ");
+   scanf("%s",new_pass);
+   strcpy(students[i].pass,new_pass);
+   editfunction(num_records);
+   printf("Password updated successfully.\n");
+
+   free(new_pass);
+   new_pass=NULL;
 }
 
 // Function to edit student's name
-void edit_student_name(int i)    //take index of student as a parameter i
+void edit_student_name(int i)
 {
-    char new_name[20];
-    printf("Enter New Name : ");
-    scanf("%s",new_name);          // Input new name
-    strcpy(students[i].name,new_name);
-    printf("Name updated successfully.\n");
-}
-void view_student_record(int i)
-{
-           // Display student information
-    printf("\t\t\tName        : %s\n",students[i].name);
-    printf("\t\t\tGender      : %s\n",students[i].Gender);
-    printf("\t\t\tAge         : %c\n",students[i].Age);
-    printf("\t\t\tTotal Grade : %f\n",students[i].TotalGrade);
-    printf("\n");
+   int num_records=ReadDataFromFile();
+   char* new_name=(char*)malloc(50);
+
+   fflush(stdin);
+   printf("Enter New name : ");
+   gets  (new_name);
+   strcpy(students[i].name,new_name);
+   editfunction(num_records);
+   printf("Name updated successfully.\n");
+
+   free(new_name);
+   new_name=NULL;
 }

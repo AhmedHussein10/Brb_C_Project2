@@ -3,13 +3,13 @@
 #include <stdlib.h>
 #include<string.h>
 #include "file_access.h"
-record students[100];
+#include "input.h"
 int ReadDataFromFile() {
     int records = 0;
     FILE *read;
     read = fopen("student_data.csv", "r");
     if (read == NULL) {
-        printf("Error opening file\n");
+        printf("No records found\n");
         exit(1);
     }
 
@@ -40,31 +40,25 @@ void WriteDataToFile(int students_number)
     fclose(write);
 
 }
-void WriteAdminPassword(char *paass)
+void WriteAdminPassword()
 {
 
-    FILE *admin_pass=fopen("admin_password.csv","w");
-    if(admin_pass==NULL)
+    FILE *write_pass=fopen("admin_password.csv","w");
+    if(write_pass==NULL)
     {
         printf("Error opening file\n");
         exit(1);
     }
 
-    fprintf(admin_pass,"%s\n",paass);
-    fclose(admin_pass);
+    fprintf(write_pass,"%s\n",Admin_Pass);
+    fclose(write_pass);
 }
-char* ReadAdminPassword()
+void ReadAdminPassword()
 {
-    static char pass[50];
     FILE *read_pass=fopen("admin_password.csv","r");
 
-    if(read_pass==NULL)
-    {
-        printf("Error opening file\n");
-        exit(1);
-    }
-    fscanf(read_pass,"%49[^,]\n",pass);
+    fscanf(read_pass,"%s\n",Admin_Pass);
+
     fclose(read_pass);
-    return pass;
 }
 

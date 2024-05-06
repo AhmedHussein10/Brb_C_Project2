@@ -4,7 +4,8 @@
 #include<stdlib.h>
 #include "data_management.h"
 #include "file_access.h"
-extern record students[100];
+#include "input.h"
+
 void editfunction(int students_number) {
     FILE *temp;
     temp = fopen("temporary_data.csv", "w");

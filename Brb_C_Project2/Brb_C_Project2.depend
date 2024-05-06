@@ -1,0 +1,85 @@
+# depslib dependency file v1.0
+1715004066 source:c:\users\ahmed\project\input.c
+	<stdlib.h>
+	"input.h"
+
+1714950954 c:\users\ahmed\project\io.h
+
+1714996993 source:c:\users\ahmed\project\menu.c
+	<stdio.h>
+	"menu.h"
+
+1714948786 c:\users\ahmed\project\menu.h
+
+1714951373 source:c:\users\ahmed\project\output.c
+	<stdio.h>
+	"io.h"
+	"menu.h"
+
+1715006134 source:c:\users\ahmed\project\brb_c_project2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../admin.h"
+	"../authentication.h"
+	"../data_management.h"
+	"../file_access.h"
+	"../menu.h"
+	"../student.h"
+	"../input.h"
+
+1714938302 c:\users\ahmed\project\admin.h
+
+1714860821 c:\users\ahmed\project\authentication.h
+
+1714927081 c:\users\ahmed\project\data_management.h
+
+1715003940 c:\users\ahmed\project\file_access.h
+
+1715005219 c:\users\ahmed\project\student.h
+
+1714963649 source:c:\users\ahmed\project\data_management.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"data_management.h"
+	"file_access.h"
+	"input.h"
+
+1715008192 source:c:\users\ahmed\project\admin.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"admin.h"
+	"file_access.h"
+	"data_management.h"
+	"input.h"
+
+1715005848 source:c:\users\ahmed\project\authentication.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"authentication.h"
+	"input.h"
+	"file_access.h"
+
+1715008003 source:c:\users\ahmed\project\file_access.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"file_access.h"
+	"input.h"
+
+1715008150 source:c:\users\ahmed\project\student.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"student.h"
+	"admin.h"
+	"input.h"
+	"authentication.h"
+	"file_access.h"
+	"data_management.h"
+
+1715004082 c:\users\ahmed\project\input.h
+

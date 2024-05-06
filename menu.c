@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include "menu.h"
 
 int select_mode(void)       // determin if the user will go admin mode or user mode
 {
@@ -11,7 +12,7 @@ int select_mode(void)       // determin if the user will go admin mode or user m
     printf("\t\t\t|       2. User Mode          |\n");
     printf("\t\t\t|                             |\n");
     printf("\t\t\t|_____________________________|\n");
-    printf("\nWill You Go User Or Admin : ");
+    printf("\nPlease select mode : ");
     scanf("%d",&choice);
     return choice;
 }
@@ -55,3 +56,4 @@ int user_menu(void)    //show user Privileges
     scanf("%d",&choice);
     return choice;
 }
+

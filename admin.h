@@ -1,6 +1,3 @@
-//
-// Created by HP on 5/5/2024.
-//
 
 #ifndef UNTITLED1_ADMIN_H
 #define UNTITLED1_ADMIN_H

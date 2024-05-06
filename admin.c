@@ -1,27 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>
+#include <string.h>
 #include "admin.h"
 #include "file_access.h"
 #include "data_management.h"
-extern record students[100];
+#include "input.h"
+
 void ala_edit_student_grade()
 {
     int eid;
     int local_ngrade;
     int local_found=0;
-    printf("Enter ID of student to change hid grade:");
+    printf("Enter ID of student to change his grade : ");
     scanf("%d",&eid);
-    printf("Enter the new grade:");
-    scanf("%d",&local_ngrade);
 
     int num_records = ReadDataFromFile();
     for (int i = 0; i < num_records; i++) {
         if (eid == students[i].id)
         {
-            students[i].grade=local_ngrade;
-            local_found=1;
-            break;
+           printf("Enter the new grade : ");
+           scanf("%d",&local_ngrade);
+           students[i].grade=local_ngrade;
+           local_found=1;
+           break;
         }
     }
     editfunction(num_records);
@@ -41,26 +42,26 @@ void ala_edit_student_grade()
 void ala_add_record()
 {
     int local_no_of_students;
-    printf("Enter how many records do you want to add:\n");
+    printf("Enter how many records do you want to add : ");
     scanf("%d",&local_no_of_students);
 
 
     for(int i=0;i<local_no_of_students;i++)
     {
         printf("for student %d\n",1+i);
-
-        printf("Enter name :");
-        scanf("%s",students[i].name);
-        printf("Enter ID :");
-        scanf("%d",&students[i].id);
-        printf("Enter age :");
-        scanf("%d",&students[i].age);
-        printf("Enter gender :");
-        scanf("%s",students[i].gender);
-        printf("Enter password :");
-        scanf("%s",students[i].pass);
-        printf("Enter grade :");
-        scanf("%d",&students[i].grade);
+        fflush(stdin);
+        printf("Enter name     : ");
+        gets  (students[i].name);
+        printf("Enter ID       : ");
+        scanf ("%d",&students[i].id);
+        printf("Enter age      : ");
+        scanf ("%d",&students[i].age);
+        printf("Enter gender   : ");
+        scanf ("%s",students[i].gender);
+        printf("Enter password : ");
+        scanf ("%s",students[i].pass);
+        printf("Enter grade    : ");
+        scanf ("%d",&students[i].grade);
 
     }
     WriteDataToFile(local_no_of_students);
@@ -72,7 +73,7 @@ void ala_add_record()
 
 void ala_remove_record() {
     int local_id;
-    printf("Enter ID of student to remove his record:");
+    printf("Enter ID of student to remove his record : ");
     scanf("%d", &local_id);
 
     int number=ReadDataFromFile();
@@ -103,7 +104,7 @@ void ala_remove_record() {
 void ala_view_record()
 {
     int local_vid;
-    printf("Enter student ID:");
+    printf("Enter student ID : ");
     scanf("%d",&local_vid);
     int found=0;
 
@@ -114,7 +115,7 @@ void ala_view_record()
     {
         if(students[i].id==local_vid)
         {
-            printf(" Name:%s\n ID:%d\n Age:%d\n Gender:%s\n Password:%s\n Grade:%d\n",students[i].name,students[i].id,students[i].age,students[i].gender,students[i].pass,students[i].grade);
+            printf(" Name :     %s\n ID :       %d\n Age :      %d\n Gender :   %s\n Password : %s\n Grade :    %d\n",students[i].name,students[i].id,students[i].age,students[i].gender,students[i].pass,students[i].grade);
             found=1;
 
             break;
@@ -122,7 +123,7 @@ void ala_view_record()
     }
     if(!found)
     {
-        printf("Student with ID:%d not found\n",local_vid);
+        printf("Student with ID %d not found\n",local_vid);
     }
 
 }
@@ -135,7 +136,7 @@ void ala_view_all_record()
 
     for(int i=0;i<local_all_records;i++)
     {
-        printf(" Name:%s\n ID:%d\n Age:%d\n Gender:%s\n Password:%s\n Grade:%d\n",students[i].name,students[i].id,students[i].age,students[i].gender,students[i].pass,students[i].grade);
+        printf(" Name :     %s\n ID :       %d\n Age :      %d\n Gender :   %s\n Password : %s\n Grade :    %d\n",students[i].name,students[i].id,students[i].age,students[i].gender,students[i].pass,students[i].grade);
 
         printf("__________________________________ \n");
     }
@@ -148,9 +149,9 @@ void ala_edit_admin_password() {
 
     printf("Enter the new password:");
     scanf("%s", new_pass);
+    strcpy(Admin_Pass,new_pass);
 
-
-    WriteAdminPassword(new_pass);
+    WriteAdminPassword();
     printf("Successfully updated password.\n");
 
     free(new_pass);

@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "authentication.h"
+#include "input.h"
+#include "file_access.h"
 
 int Check_ID (void)
 {
-   char id [20];
+   int num=ReadDataFromFile();
+   int id ;
    printf ("Enter student's ID : ");
-   scanf  ("%s",&id);
-   for (int i=0;i<Students_Number;i++)
+   scanf  ("%d",&id);
+   for (int i=0;i<num;i++)
    {
-      if (strcmp(id,students[i].ID)==0)
+      if (id==students[i].id)
       {
          return i;
       }
@@ -20,24 +24,27 @@ int Check_ID (void)
 
 int Authenticate_Admin (void)
 {
-   char Pass [20];
+   ReadAdminPassword();
+   int found=0;
+   char *pass = (char*)malloc(20 * sizeof(char));
    for (int i=0;i<3;i++)
    {
       printf ("Enter admin's password : ");
-      scanf  ("%s",&Pass);
-      if (strcmp(Pass,Admin_Pass)==0)
+      scanf  ("%s",pass);
+      if (strcmp(pass,Admin_Pass)==0)
       {
          printf ("Welcome admin\n");
-         return 1;
+         found=1;
+         break;
       }
       else
       {
          printf ("Wrong password\n");
       }
    }
-
-   printf ("No more attempts\n");
-   return 0;
+   free(pass);
+   pass=NULL;
+   return found;
 }
 
 int Authenticate_Student (void)
@@ -45,14 +52,16 @@ int Authenticate_Student (void)
    int i=Check_ID ();
    if (i!=-1)
    {
-      char Pass [20];
+      char *pass = (char*)malloc(20 * sizeof(char));
       for (int n=0;n<3;n++)
       {
          printf ("Enter student's password : ");
-         scanf  ("%s",&Pass);
-         if (strcmp(Pass,students[i].Pass)==0)
+         scanf  ("%s",pass);
+         if (strcmp(pass,students[i].pass)==0)
          {
-            printf ("Welcome %s",students[i].Name);
+            printf ("Welcome %s\n",students[i].name);
+            free(pass);
+            pass=NULL;
             return i;
          }
          else
@@ -60,7 +69,7 @@ int Authenticate_Student (void)
             printf ("Wrong password\n");
          }
       }
-   }
+    }
     else
     {
        printf ("Invalid ID\n");
