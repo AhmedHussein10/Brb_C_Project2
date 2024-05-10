@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "admin.h"
-#include "authentication.h"
-#include "data_management.h"
-#include "file_access.h"
-#include "menu.h"
-#include "student.h"
-#include "input.h"
+#include "Application_Layer/Admin_Module/admin.h"
+#include "Application_Layer/Authentication_Module/authentication.h"
+#include "Application_Layer/User_Module/student.h"
+#include "Data_Access_Layer/File_Access_Module/file_access.h"
+#include "Data_Access_Layer/Data_Management_Module/data_management.h"
+#include "User_Interface_Layer/IO_Module/input.h"
+#include "User_Interface_Layer/Menu_Module/menu.h"
 
 int main()
 {
@@ -69,7 +69,6 @@ int main()
              }
                    while(another_choice);
         }
-
     }
     else
     {
