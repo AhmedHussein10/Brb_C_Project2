@@ -3,8 +3,8 @@
 #include<string.h>
 #include<stdlib.h>
 #include "data_management.h"
-#include "../File_Access_Module/file_access.h"
-#include "../../User_Interface_Layer/IO_Module/input.h"
+#include "../File_Access/file_access.h"
+#include "../../User_Interface/IO/input.h"
 
 void editfunction(int students_number) {
     FILE *temp;

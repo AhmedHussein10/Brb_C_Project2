@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Application_Layer/Admin_Module/admin.h"
-#include "Application_Layer/Authentication_Module/authentication.h"
-#include "Application_Layer/User_Module/student.h"
-#include "Data_Access_Layer/File_Access_Module/file_access.h"
-#include "Data_Access_Layer/Data_Management_Module/data_management.h"
-#include "User_Interface_Layer/IO_Module/input.h"
-#include "User_Interface_Layer/Menu_Module/menu.h"
+#include "Application/Admin/admin.h"
+#include "Application/Authentication/authentication.h"
+#include "Application/User/student.h"
+#include "Data_Access/File_Access/file_access.h"
+#include "Data_Access/Data_Management/data_management.h"
+#include "User_Interface/IO/input.h"
+#include "User_Interface/Menu/menu.h"
 
 int main()
 {

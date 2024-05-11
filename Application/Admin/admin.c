@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "admin.h"
-#include "../../Data_Access_Layer/File_Access_Module/file_access.h"
-#include "../../Data_Access_Layer/Data_Management_Module/data_management.h"
-#include "../../User_Interface_Layer/IO_Module/input.h"
+#include "../../Data_Access/File_Access/file_access.h"
+#include "../../Data_Access/Data_Management/data_management.h"
+#include "../../User_Interface/IO/input.h"
 
 void ala_edit_student_grade()
 {

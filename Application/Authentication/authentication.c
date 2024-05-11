@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "authentication.h"
-#include "../../User_Interface_Layer/IO_Module/input.h"
-#include "../../Data_Access_Layer/File_Access_Module/file_access.h"
+#include "../../User_Interface/IO/input.h"
+#include "../../Data_Access/File_Access/file_access.h"
 
 int Check_ID (void)
 {
