@@ -11,6 +11,7 @@ int select_mode(void)       // determin if the user will go admin mode or user m
     printf("\t\t\t|                             |\n");
     printf("\t\t\t|       2. User Mode          |\n");
     printf("\t\t\t|                             |\n");
+    printf("\t\t\t|       0. Exit               |\n");
     printf("\t\t\t|_____________________________|\n");
     printf("\nPlease select mode : ");
     scanf("%d",&choice);
@@ -34,6 +35,7 @@ int admin_menu(void)    //show admin Privileges
     printf("\t\t\t|                                      |\n");
     printf("\t\t\t|       6. Edit student grade          |\n");
     printf("\t\t\t|                                      |\n");
+    printf("\t\t\t|       0. Exit                        |\n");
     printf("\t\t\t|______________________________________|\n");
     printf("\n\nPlease Select Your Choice : ");
     scanf("%d",&choice);
@@ -51,6 +53,7 @@ int user_menu(void)    //show user Privileges
     printf("\t\t\t|                                      |\n");
     printf("\t\t\t|       3. Edit Your Name              |\n");
     printf("\t\t\t|                                      |\n");
+    printf("\t\t\t|       0. Exit                        |\n");
     printf("\t\t\t|______________________________________|\n");
     printf("\n\nPlease Select Your Choice : ");
     scanf("%d",&choice);

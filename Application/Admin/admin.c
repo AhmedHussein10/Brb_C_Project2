@@ -54,6 +54,7 @@ void ala_add_record()
         gets  (students[i].name);
         printf("Enter ID       : ");
         scanf ("%d",&students[i].id);
+        fflush(stdin);
         printf("Enter age      : ");
         scanf ("%d",&students[i].age);
         printf("Enter gender   : ");
@@ -133,13 +134,16 @@ void ala_view_all_record()
 
     int local_all_records=ReadDataFromFile();;
 
-
-    for(int i=0;i<local_all_records;i++)
+    if (local_all_records)
     {
-        printf(" Name :     %s\n ID :       %d\n Age :      %d\n Gender :   %s\n Password : %s\n Grade :    %d\n",students[i].name,students[i].id,students[i].age,students[i].gender,students[i].pass,students[i].grade);
+       for(int i=0;i<local_all_records;i++)
+       {
+          printf(" Name :     %s\n ID :       %d\n Age :      %d\n Gender :   %s\n Password : %s\n Grade :    %d\n",students[i].name,students[i].id,students[i].age,students[i].gender,students[i].pass,students[i].grade);
 
-        printf("__________________________________ \n");
+          printf("__________________________________ \n");
+      }
     }
+    else printf ("No students recorded \n");
 
 }
 
